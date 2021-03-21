@@ -36,7 +36,11 @@ app.get('/', (req, res) => {
     let output = feeds.sort((a, b) => {
         return Math.abs(new Date(b.pubDate) - new Date(a.pubDate));
     });
-    res.send(output);
+    let data = {
+        name: 'congo-net API',
+        items: feeds
+    };
+    res.send(JSON.stringify(data));
 });
 
 const port = process.env.PORT || 3000;
